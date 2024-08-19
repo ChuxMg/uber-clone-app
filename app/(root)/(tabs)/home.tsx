@@ -1,13 +1,19 @@
 /* eslint-disable prettier/prettier */
-import { View, Text } from "react-native";
-import React from "react";
 
-const Home = () => {
+import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
+import { Link } from "expo-router";
+import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+export default function Page() {
+  const { user } = useUser();
+
   return (
-    <View>
-      <Text>Home Page</Text>
-    </View>
+    <SafeAreaView>
+      <SignedIn>
+        <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
+      </SignedIn>
+      
+    </SafeAreaView>
   );
-};
-
-export default Home
+}
