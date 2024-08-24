@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 
-import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
-import { Link } from "expo-router";
+import { useUser } from "@clerk/clerk-expo";
+import { router } from "expo-router";
 import {
   ActivityIndicator,
   FlatList,
@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { data, icons, images } from "../../../constants/index";
+import { icons, images } from "../../../constants/index";
 import RideCard from "@/components/RideCard";
 import GoogleTextInput from "@/components/GoogleTextInput";
 import Map from "@/components/Map";
@@ -134,7 +134,16 @@ export default function Page() {
   const [hasPemissions, setHasPemissions] = useState(false);
 
   const handleSignOut = () => {};
-  const handleDestinationPress = () => {};
+
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+
+    router.push("/(root)/find-ride");
+  };
 
   useEffect(() => {
     const requestLocation = async () => {

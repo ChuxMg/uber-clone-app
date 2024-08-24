@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { data, icons } from "@/constants";
+import { icons } from "@/constants";
 import { GoogleInputProps } from "@/types/type";
-import { View, Text, Image } from "react-native";
+import { View, Image } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 const googlePlacesApiKey = process.env.EXPO_PUBLIC_GOOGLE_API_KEY;
